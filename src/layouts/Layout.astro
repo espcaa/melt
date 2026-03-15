@@ -10,13 +10,6 @@ import Hackclub from "../components/Hackclub.astro";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
-
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Recursive:slnt,wght,CASL,CRSV,MONO@-15..0,300..1000,0..1,0..1,0..1&display=swap"
-            rel="stylesheet"
-        />
     </head>
     <body>
         <Hackclub />
@@ -28,19 +21,19 @@ import Hackclub from "../components/Hackclub.astro";
 
 <style is:global>
 
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
     body {
         margin: 0;
         display: flow-root;
-        font-family: "Recursive", monospace;
-        font-variation-settings:
-            "MONO" 1,
-            "CASL" 0.5;
+        font-family: "Crimson", sans-serif;
+        overflow-x: hidden;
     }
     main {
         margin: 0 auto;
     }
 
-    h1 {
-        font-weight: 800;
-    }
 </style>

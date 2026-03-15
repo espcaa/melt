@@ -5,7 +5,36 @@ import Layout from "../layouts/Layout.astro";
 
 <Layout title="Melt">
     <canvas id="scene-canvas"></canvas>
-    <div class="mainContainer"></div>
+    <div class="mainContainer">
+        <div class="title">
+            <h1>Melt</h1>
+            <p class="subtitle">
+                Make a funny pcb with smd components and get a hotplate to <em>melt</em> assemble it!
+            </p>
+        </div>
+        <div class="cta">
+            <a href="
+            ">
+                <button class="btn">Submit now!</button>
+            </a>
+        </div>
+        <div class="content">
+        </div>
+    </div>
+    <footer>
+        <div class="footerContent">
+            <div class="bigTitle">
+            <h2>
+                Melt
+            </h2>
+            </div>
+            <div class="links">
+                <p>
+                    Made with &lt;3 by teens at hackclub!
+                </p>
+            </div>
+        </div>
+    </footer>
 </Layout>
 
 <style>
@@ -18,6 +47,105 @@ import Layout from "../layouts/Layout.astro";
         pointer-events: none;
         z-index: 1;
     }
+
+    .title {
+        margin-left: 1rem;
+        font-family: "Satoshi";
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+    h1 {
+        position: relative;
+        color: #333;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        font-size: 10rem;
+        margin-bottom: 0.3rem;
+        margin-top: 4rem;
+    }
+
+
+
+    h1::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-color: #f8abff;
+        border-radius: 0.5rem;
+        transform: rotate(5deg) scalex(1.2);
+        z-index: -1;
+    }
+
+    .subtitle {
+        color: #555;
+        font-family: "Crimson", serif;
+        font-size: 1.5rem;
+        max-width: 600px;
+        text-align: center;
+    }
+
+    footer {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        background-color: #2d2e2e;
+        color: #fff;
+        padding: 3rem 4rem;
+    }
+
+    em {
+        text-decoration: line-through black;
+    }
+
+    .cta {
+        margin-top: 2rem;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    button.btn {
+        background-color: #fff2c7;
+        color: #333;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+    }
+
+    .btn:hover {
+        background-color: #ffe0a3;
+    }
+
+    .footerContent {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        width: 100%;
+    }
+
+    .bigTitle h2 {
+        font-family: "Playfair";
+        font-size: 8rem;
+        line-height: 1;
+        margin: 0;
+    }
+
+    .links p {
+        color: #aaa;
+        font-family: "Satoshi";
+        font-size: 1rem;
+        margin: 0;
+    }
+
+
+
+
 </style>
 
 <script>
@@ -60,7 +188,6 @@ import Layout from "../layouts/Layout.astro";
     let actions: THREE.AnimationAction[] = [];
     let animationDuration = 1;
 
-    // Soft toon gradient — 4 steps for a gentle cartoon look
     const gradientMap = new THREE.DataTexture(
         new Uint8Array([60, 120, 180, 255]),
         4, 1, THREE.RedFormat,
@@ -71,7 +198,6 @@ import Layout from "../layouts/Layout.astro";
 
     const loader = new GLTFLoader();
     loader.load("/pcbboard.glb", (gltf) => {
-        // Swap materials to toon shading
         gltf.scene.traverse((child) => {
             if (child instanceof THREE.Mesh && child.material) {
                 const old = child.material as THREE.MeshStandardMaterial;
@@ -85,7 +211,6 @@ import Layout from "../layouts/Layout.astro";
 
         scene.add(gltf.scene);
 
-        // Use Blender camera if exported
         if (gltf.cameras.length > 0) {
             camera = gltf.cameras[0];
             if (camera instanceof THREE.PerspectiveCamera) {
@@ -94,7 +219,6 @@ import Layout from "../layouts/Layout.astro";
             }
         }
 
-        // Set up animation scrubbing
         if (gltf.animations.length > 0) {
             mixer = new THREE.AnimationMixer(gltf.scene);
             for (const clip of gltf.animations) {
@@ -106,7 +230,6 @@ import Layout from "../layouts/Layout.astro";
                 ...gltf.animations.map((a) => a.duration),
             );
 
-            // Scrub animation with scroll
             ScrollTrigger.create({
                 trigger: ".mainContainer",
                 start: "top top",
