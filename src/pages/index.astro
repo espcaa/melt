@@ -1,6 +1,8 @@
 ---
 import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
+import Footer from "../components/Footer.astro";
+import Steps from "../components/Steps.astro";
 ---
 
 <Layout title="Melt">
@@ -19,22 +21,10 @@ import Layout from "../layouts/Layout.astro";
             </a>
         </div>
         <div class="content">
+            <Steps />
         </div>
     </div>
-    <footer>
-        <div class="footerContent">
-            <div class="bigTitle">
-            <h2>
-                Melt
-            </h2>
-            </div>
-            <div class="links">
-                <p>
-                    Made with &lt;3 by teens at hackclub!
-                </p>
-            </div>
-        </div>
-    </footer>
+    <Footer />
 </Layout>
 
 <style>
@@ -45,7 +35,7 @@ import Layout from "../layouts/Layout.astro";
         width: 100%;
         height: 100%;
         pointer-events: none;
-        z-index: 1;
+        z-index: -1;
     }
 
     .title {
@@ -87,15 +77,6 @@ import Layout from "../layouts/Layout.astro";
         text-align: center;
     }
 
-    footer {
-        position: relative;
-        z-index: 2;
-        width: 100%;
-        background-color: #2d2e2e;
-        color: #fff;
-        padding: 3rem 4rem;
-    }
-
     em {
         text-decoration: line-through black;
     }
@@ -122,29 +103,6 @@ import Layout from "../layouts/Layout.astro";
         background-color: #ffe0a3;
     }
 
-    .footerContent {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        width: 100%;
-    }
-
-    .bigTitle h2 {
-        font-family: "Playfair";
-        font-size: 8rem;
-        line-height: 1;
-        margin: 0;
-    }
-
-    .links p {
-        color: #aaa;
-        font-family: "Satoshi";
-        font-size: 1rem;
-        margin: 0;
-    }
-
-
-
 
 </style>
 
@@ -167,7 +125,6 @@ import Layout from "../layouts/Layout.astro";
 
     const scene = new THREE.Scene();
 
-    // Default camera — will be replaced by Blender camera if available
     let camera: THREE.PerspectiveCamera | THREE.Camera =
         new THREE.PerspectiveCamera(
             45,
@@ -177,7 +134,6 @@ import Layout from "../layouts/Layout.astro";
         );
     camera.position.set(0, 2, 5);
 
-    // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 1);
     scene.add(ambientLight);
     const dirLight = new THREE.DirectionalLight(0xffffff, 2);
@@ -260,4 +216,20 @@ import Layout from "../layouts/Layout.astro";
             camera.updateProjectionMatrix();
         }
     });
+
+    // general gsap anim stuff
+
+    const tl = gsap.timeline();
+    tl.from(".title h1", {
+        y: -100,
+        opacity: 0.5,
+        stagger: 0.2,
+        ease: "bounce.out(1, 0.3)",
+        duration: 0.6,
+    }).from(".cta" + " .btn", {
+        scale: 0.8,
+        opacity: 0,
+        ease: "back.out(1.7)",
+        duration: 0.5,
+    }, "-=0.3")
 </script>

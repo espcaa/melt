@@ -1,0 +1,55 @@
+---
+import Card from "./Card.astro";
+import planStepImage from "../assets/plan.png";
+import schematicStepImage from "../assets/schematic.png";
+import pcbStepImage from "../assets/pcb.png";
+import meltStepImage from "../assets/fail.jpeg";
+---
+
+<div class="steps">
+    <Card
+    number={1}
+    image={planStepImage}
+    alt="sketch"
+    title="Find an idea!"
+    description="Think about some weird stuff (not too hard, or maybe you just like suffering?) and sketch it!"
+    />
+    <Card
+    number={2}
+    image={schematicStepImage}
+    alt="schematic"
+    title="Make a schematic!"
+    description="Use KiCad to make a schematic of your design! Pick out nice smd parts and make sure to check the datasheets for the parts you use!"
+    />
+    <Card
+    number={3}
+    image={pcbStepImage}
+    alt="pcb layout"
+    title="Wire it!"
+    description="Use KiCad to make a PCB layout of your design! Make sure to add a fun silkscreen and make it cute :3c"
+    />
+    <Card
+    number={4}
+    image={meltStepImage}
+    alt="melted pcb"
+    title="Make it irl!"
+    description="Get a hotplate/solder paste/everything you need + components and assemble your design! (and solder it better than this :-:)"
+    />
+</div>
+
+<style>
+    .steps {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+        max-width: 900px;
+        margin: 4rem auto;
+        padding: 0 1rem;
+    }
+
+    @media (max-width: 600px) {
+        .steps {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

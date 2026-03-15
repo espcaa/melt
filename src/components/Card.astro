@@ -1,0 +1,71 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    number: number;
+    image: ImageMetadata;
+    alt: string;
+    title: string;
+    description: string;
+}
+
+const { number, image, alt, title, description } = Astro.props;
+---
+
+<div class="step">
+    <span class="step-number">{number}</span>
+    <Image src={image} alt={alt} class="step-img" />
+    <h3>{title}</h3>
+    <p>{description}</p>
+</div>
+
+<style>
+    .step {
+        position: relative;
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    }
+
+    .step-number {
+        position: absolute;
+        top: -0.75rem;
+        left: -0.75rem;
+        width: 2.5rem;
+        height: 2.5rem;
+        background: #f8abff;
+        color: #333;
+        font-family: "Satoshi";
+        font-weight: 700;
+        font-size: 1.2rem;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .step-img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .step h3 {
+        font-family: "Satoshi";
+        font-size: 1.25rem;
+        color: #333;
+        margin: 0 0 0.5rem;
+    }
+
+    .step p {
+        font-family: "Crimson", serif;
+        font-size: 1rem;
+        color: #666;
+        margin: 0;
+        line-height: 1.5;
+    }
+</style>
