@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import hackClubLogo from "../assets/hackclub.png";
+---
+
+<div class="hackclub-link">
+    <a href="https://hackclub.com" target="_blank" rel="noopener noreferrer">
+        <Image src={hackClubLogo} alt="Hack Club!" />
+    </a>
+</div>
+
+<style>
+    .hackclub-link {
+        position: fixed;
+        top: 0;
+        left: 1rem;
+        max-width: 5rem;
+        z-index: 10;
+    }
+
+    .hackclub-link img {
+        width: 100%;
+        height: auto;
+        display: block;
+        transition: transform 0.2s ease-in-out;
+        transform-origin: top;
+    }
+
+    @media (min-width: 640px) {
+        .hackclub-link {
+            left: 3rem;
+            max-width: 9rem;
+        }
+    }
+
+    .hackclub-link img:hover {
+        transform: scale(1.05) rotate(5deg);
+    }
+</style>
