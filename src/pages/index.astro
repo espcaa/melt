@@ -4,9 +4,17 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Steps from "../components/Steps.astro";
 import Faq from "../components/FAQ.astro";
+import ArrowsImg from "../assets/arrows.png";
+import { Image } from "astro:assets";
 ---
 
 <Layout title="Melt">
+    <div class="absoluteDocBtn">
+        <a href="https://docs.google.com/document/d/1Xo9n8s0l3j2mLh7e5kKZtHqj8v6u9yXo5z8a9b0c1/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+            <button class="docbtn"><span class="material-icons icon">description</span> <p>Docs</p></button>
+        </a>
+        <Image src={ArrowsImg} alt="arrows" class="imageAbsoluteButton" />
+    </div>
     <canvas id="scene-canvas"></canvas>
     <div class="mainContainer">
         <div class="title">
@@ -147,6 +155,44 @@ import Faq from "../components/FAQ.astro";
 
     a {
         text-decoration: none;
+    }
+
+    .absoluteDocBtn {
+        position: fixed;
+        display: flex;
+        align-items: center;
+        top: 1rem;
+        right: 1rem;
+        z-index: 10;
+        flex-direction: row;
+    }
+
+    .imageAbsoluteButton {
+        position: absolute;
+        /* place it at the bottom left of the button */
+        bottom: -70px;
+        left: -70px;
+
+        width: 100px;
+        height: 100px;
+    }
+
+    .icon {
+        font-size: 1.5rem;
+        vertical-align: middle;
+        margin-right: 0.5rem;
+    }
+
+    .docbtn {
+        background-color: #f8abff;
+        color: #333;
+        border: none;
+        padding: 0.3rem 1.5rem;
+        font-size: 1rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
     }
 
 
