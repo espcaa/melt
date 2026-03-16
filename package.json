@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.7",
+    "@astrojs/node": "^10.0.2",
     "@libsql/client": "^0.17.0",
     "@types/three": "^0.183.1",
     "astro": "^6.0.4",

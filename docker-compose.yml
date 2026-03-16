@@ -1,0 +1,8 @@
+services:
+  melt:
+    build: .
+    ports:
+      - "4321:4321"
+    env_file:
+      - .env
+    restart: unless-stopped

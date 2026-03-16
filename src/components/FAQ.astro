@@ -86,7 +86,6 @@ const faqs = [
 
     gsap.registerPlugin(ScrollTrigger);
 
-    // Entrance animation: stagger FAQ items in from below
     const details = document.querySelectorAll(".faq details");
     gsap.from(details, {
         y: 40,
@@ -100,7 +99,6 @@ const faqs = [
         },
     });
 
-    // Smooth expand/collapse animation
     details.forEach((el) => {
         const summary = el.querySelector("summary")!;
         const content = el.querySelector("p")!;
@@ -109,7 +107,6 @@ const faqs = [
             e.preventDefault();
 
             if (el.hasAttribute("open")) {
-                // Collapse
                 gsap.to(content, {
                     height: 0,
                     opacity: 0,
@@ -125,7 +122,6 @@ const faqs = [
                     duration: 0.3,
                 });
             } else {
-                // Expand
                 el.setAttribute("open", "");
                 const fullHeight = content.scrollHeight;
                 gsap.fromTo(
