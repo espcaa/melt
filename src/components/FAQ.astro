@@ -1,0 +1,80 @@
+---
+const faqs = [
+    { q: "What is Melt?", a: "Melt is a program where you design a fun PCB with SMD components and get a hotplate to assemble it yourself!" },
+    { q: "Do I need experience?", a: "Nope! Beginners are totally welcome. We'll help you learn KiCad and soldering along the way." },
+    { q: "What do I get?", a: "You'll receive a hotplate, solder paste, and everything you need to assemble your PCB design." },
+    { q: "How do I submit?", a: "Design your PCB in KiCad and submit it through our form. We'll review it and get back to you!" },
+];
+---
+
+<section class="faq">
+    <h2>FAQ</h2>
+    {faqs.map(({ q, a }) => (
+        <details>
+            <summary>{q}</summary>
+            <p>{a}</p>
+        </details>
+    ))}
+</section>
+
+<style>
+    .faq {
+        max-width: 700px;
+        margin: 4rem auto;
+        padding: 0 1rem;
+    }
+
+    .faq h2 {
+        font-family: "Satoshi";
+        font-size: 2rem;
+        color: #333;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    details {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 0;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+    }
+
+    summary {
+        font-family: "Satoshi";
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: #333;
+        padding: 1.25rem 1.5rem;
+        cursor: pointer;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    summary::after {
+        content: "+";
+        font-size: 1.5rem;
+        color: #f8abff;
+        transition: transform 0.2s;
+    }
+
+    details[open] summary::after {
+        content: "−";
+    }
+
+    summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details p {
+        font-family: "Crimson", serif;
+        font-size: 1.05rem;
+        color: #666;
+        line-height: 1.6;
+        padding: 0 1.5rem 1.25rem;
+        margin: 0;
+    }
+</style>

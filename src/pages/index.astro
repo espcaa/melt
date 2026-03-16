@@ -3,6 +3,7 @@ import "../styles/global.css";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Steps from "../components/Steps.astro";
+import Faq from "../components/FAQ.astro";
 ---
 
 <Layout title="Melt">
@@ -15,14 +16,18 @@ import Steps from "../components/Steps.astro";
             </p>
         </div>
         <div class="cta">
-            <a href="
-            ">
+            <div class="rsvp">
+                <input type="email" id="rsvp-input" placeholder="youremail@hackclub.com" />
+                <button class="rsvp" id="rsvp-button">RSVP!</button>
+            </div>
+            <a href="">
                 <button class="btn">Submit now!</button>
             </a>
         </div>
         <div class="content">
             <Steps />
         </div>
+        <Faq />
     </div>
     <Footer />
 </Layout>
@@ -87,6 +92,43 @@ import Steps from "../components/Steps.astro";
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-direction: column;
+        margin-bottom: 4rem;
+    }
+
+    input {
+        padding: 0.75rem 1rem;
+        font-size: 1rem;
+        border: 2px solid #f8abff;
+        border-radius: 0.5rem;
+        margin-right: 1rem;
+        width: 250px;
+    }
+
+    .rsvp {
+        display: flex;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+
+    button.rsvp {
+        background-color: #f8abff;
+        color: #333;
+        border: none;
+        padding: 1rem 2rem;
+        font-size: 1.25rem;
+        border-radius: 0.5rem;
+        cursor: pointer;
+        margin: 0;
+    }
+
+    button.rsvp:hover {
+        background-color: #f6a3f9;
+    }
+
+    button.rsvp:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
     }
 
     button.btn {
@@ -101,6 +143,10 @@ import Steps from "../components/Steps.astro";
 
     .btn:hover {
         background-color: #ffe0a3;
+    }
+
+    a {
+        text-decoration: none;
     }
 
 
@@ -232,4 +278,56 @@ import Steps from "../components/Steps.astro";
         ease: "back.out(1.7)",
         duration: 0.5,
     }, "-=0.3")
+
+    // rsvp
+
+    const rsvpInput = document.getElementById("rsvp-input") as HTMLInputElement;
+    const rsvpButton = document.getElementById("rsvp-button") as HTMLButtonElement;
+
+    function shake(el: HTMLElement) {
+        gsap.fromTo(el, { x: -6 }, {
+            x: 6, duration: 0.08, ease: "power1.inOut",
+            yoyo: true, repeat: 5,
+        });
+    }
+
+    rsvpButton.addEventListener("click", async () => {
+        const email = rsvpInput.value.trim();
+
+        if (!email || !email.includes("@")) {
+            shake(rsvpInput);
+            return;
+        }
+
+        rsvpButton.disabled = true;
+        rsvpButton.textContent = "Sending...";
+
+        try {
+            const res = await fetch("/api/rsvp", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email }),
+            });
+
+            if (res.ok) {
+                rsvpInput.value = "";
+                rsvpButton.textContent = "Done!";
+                gsap.to(rsvpButton, { backgroundColor: "#4caf50", color: "#fff", duration: 0.3 });
+                setTimeout(() => {
+                    gsap.to(rsvpButton, { backgroundColor: "#f8abff", color: "#333", duration: 0.3 });
+                    rsvpButton.textContent = "RSVP!";
+                    rsvpButton.disabled = false;
+                }, 2000);
+            } else {
+                shake(rsvpInput);
+                rsvpButton.disabled = false;
+                rsvpButton.textContent = "RSVP!";
+            }
+        } catch {
+            shake(rsvpInput);
+            rsvpButton.disabled = false;
+            rsvpButton.textContent = "RSVP!";
+        }
+    });
+
 </script>
