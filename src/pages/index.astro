@@ -6,12 +6,13 @@ import Steps from "../components/Steps.astro";
 import Faq from "../components/FAQ.astro";
 import ArrowsImg from "../assets/arrows.png";
 import { Image } from "astro:assets";
+import Examples from "../components/Examples.astro";
 ---
 
 <Layout title="Melt">
     <div class="absoluteDocBtn">
         <a href="https://docs.google.com/document/d/1Xo9n8s0l3j2mLh7e5kKZtHqj8v6u9yXo5z8a9b0c1/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
-            <button class="docbtn"><span class="material-icons icon">description</span> <p>Docs</p></button>
+            <button class="docbtn"><span class="material-icons icon">description</span> <p class="fancy">Docs</p></button>
         </a>
         <Image src={ArrowsImg} alt="arrows" class="imageAbsoluteButton" />
     </div>
@@ -35,6 +36,7 @@ import { Image } from "astro:assets";
         <div class="content">
             <Steps />
         </div>
+        <Examples />
         <Faq />
     </div>
     <Footer />
@@ -169,7 +171,6 @@ import { Image } from "astro:assets";
 
     .imageAbsoluteButton {
         position: absolute;
-        /* place it at the bottom left of the button */
         bottom: -70px;
         left: -70px;
 
@@ -193,6 +194,18 @@ import { Image } from "astro:assets";
         cursor: pointer;
         display: flex;
         align-items: center;
+    }
+
+    p.fancy {
+        font-family: "Satoshi";
+        font-size : 1.5rem;
+        margin-bottom: 0.5rem;
+        margin-top: 0.5rem;
+    }
+
+    .mainContainer {
+        padding-bottom: 100vh;
+        margin-bottom: 70vh;
     }
 
 
@@ -289,6 +302,14 @@ import { Image } from "astro:assets";
                         action.time = targetTime;
                     }
                     mixer!.update(0);
+                },
+                onLeave: () => {
+                    canvas.style.position = "absolute";
+                    canvas.style.top = `${window.scrollY}px`;
+                },
+                onEnterBack: () => {
+                    canvas.style.position = "fixed";
+                    canvas.style.top = "0";
                 },
             });
         }
