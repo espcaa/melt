@@ -115,6 +115,7 @@ const faqs = [
                     onComplete: () => {
                         el.removeAttribute("open");
                         gsap.set(content, { clearProps: "all" });
+                        ScrollTrigger.refresh();
                     },
                 });
                 gsap.to(summary.querySelector("::after") ?? summary, {
@@ -132,6 +133,7 @@ const faqs = [
                         opacity: 1,
                         duration: 0.4,
                         ease: "power2.out",
+                        onComplete: () => ScrollTrigger.refresh(),
                     }
                 );
             }

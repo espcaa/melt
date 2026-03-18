@@ -26,7 +26,7 @@ import Examples from "../components/Examples.astro";
         </div>
         <div class="cta">
             <div class="rsvp">
-                <input type="email" id="rsvp-input" placeholder="youremail@hackclub.com" />
+                <input type="email" id="rsvp-input" placeholder="you@email.com" />
                 <button class="rsvp" id="rsvp-button">RSVP!</button>
             </div>
             <a href="">
@@ -36,8 +36,8 @@ import Examples from "../components/Examples.astro";
         <div class="content">
             <Steps />
         </div>
-        <Examples />
         <Faq />
+        <Examples />
     </div>
     <Footer />
 </Layout>
@@ -72,13 +72,11 @@ import Examples from "../components/Examples.astro";
         margin-top: 4rem;
     }
 
-
-
     h1::before {
         content: "";
         position: absolute;
         inset: 0;
-        background-color: #f8abff;
+        background-color: var(--primary-color);
         border-radius: 0.5rem;
         transform: rotate(5deg) scalex(1.2);
         z-index: -1;
@@ -109,7 +107,7 @@ import Examples from "../components/Examples.astro";
     input {
         padding: 0.75rem 1rem;
         font-size: 1rem;
-        border: 2px solid #f8abff;
+        border: 2px solid var(--primary-color);
         border-radius: 0.5rem;
         margin-right: 1rem;
         width: 250px;
@@ -122,7 +120,7 @@ import Examples from "../components/Examples.astro";
     }
 
     button.rsvp {
-        background-color: #f8abff;
+        background-color: var(--primary-color);
         color: #333;
         border: none;
         padding: 1rem 2rem;
@@ -133,7 +131,7 @@ import Examples from "../components/Examples.astro";
     }
 
     button.rsvp:hover {
-        background-color: #f6a3f9;
+        background-color: var(--primary-color-hover);
     }
 
     button.rsvp:disabled {
@@ -169,6 +167,10 @@ import Examples from "../components/Examples.astro";
         flex-direction: row;
     }
 
+    .docbtn:hover {
+        background-color: var(--primary-color-hover);
+    }
+
     .imageAbsoluteButton {
         position: absolute;
         bottom: -70px;
@@ -185,7 +187,7 @@ import Examples from "../components/Examples.astro";
     }
 
     .docbtn {
-        background-color: #f8abff;
+        background-color: var(--primary-color);
         color: #333;
         border: none;
         padding: 0.3rem 1.5rem;
@@ -204,7 +206,7 @@ import Examples from "../components/Examples.astro";
     }
 
     .mainContainer {
-        padding-bottom: 100vh;
+        padding-bottom: 70vh;
         margin-bottom: 0vh;
     }
 

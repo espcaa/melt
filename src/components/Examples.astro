@@ -1,7 +1,110 @@
 ---
-
+import ExampleItem from "./ExampleItem.astro"
+import Placeholder from "../assets/placeholder.png"
 ---
-<div class="examples">
-    <h2>Examples</h2>
-    <p>/// --- wip --- ///</p>
-</div>
+<section class="examples-section">
+    <div class="marquee">
+        <div class="marquee-track">
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+            <ExampleItem
+                image={Placeholder}
+                imageAlt=""
+                title="Blinking Badge"
+                description="A cute badge with a blinking led! Perfect for beginners :)"
+            />
+        </div>
+    </div>
+</section>
+
+<style>
+    .examples-section {
+        margin-top: 8rem;
+        width: 100vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        overflow: hidden;
+        padding: 3rem 0;
+    }
+
+    .marquee-track {
+        display: flex;
+        gap: 3rem;
+        width: max-content;
+        animation: scroll 20s linear infinite;
+    }
+
+    @keyframes scroll {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(-50%);
+        }
+    }
+</style>

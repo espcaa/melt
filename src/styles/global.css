@@ -26,3 +26,11 @@
   padding: 20px;
   min-height: 300vh;
 }
+
+:root {
+  --primary-color: #f8abff;
+  --primary-color-hover: #f6a3f9;
+  --secondary-color: #fff2c7;
+  --background-color: #ffffff;
+  --text-color: #333;
+}

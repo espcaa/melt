@@ -1,0 +1,76 @@
+---
+
+interface Props {
+  image: ImageMetadata;
+  imageAlt: string;
+  title: string;
+  description: string;
+}
+import { Image } from "astro:assets";
+const { image, imageAlt, title, description } = Astro.props;
+
+let rotationLeftOrRight = Math.random() < 0.5 ? -10 : 10;
+
+---
+
+<div class="marquee-item">
+    <div class="image-wrapper">
+        <Image src={image} alt={imageAlt} class="example-image" />
+    </div>
+    <div class="card-body">
+        <h3>{title}</h3>
+        <p class="subtitle">{description}</p>
+    </div>
+</div>
+
+
+<style define:vars={{ rotationLeftOrRight }}>
+.marquee-item {
+    background-color: var(--secondary-color);
+    border-radius: 1rem;
+    width: 340px;
+    font-family: "Satoshi", sans-serif;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+}
+
+
+img.example-image {
+    transform: scale(1.05) rotate(calc(var(--rotationLeftOrRight) * 1deg));
+    object-fit: cover;
+    width: 100%;
+    height: 220px;
+    display: block;
+    transition: transform 0.3s ease;
+    border-radius: 1rem 1rem 1rem 1rem;
+}
+
+.marquee-item:hover img.example-image {
+    transform: scale(1.12) rotate(0deg);
+}
+
+.card-body {
+    margin-top: 1.5rem;
+    padding: 1rem 1.25rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+h3 {
+    font-size: 1.15rem;
+    font-family: "Satoshi", sans-serif;
+    font-weight: 800;
+    margin: 0;
+    color: #333;
+}
+
+p.subtitle {
+    margin: 0;
+    color: #555;
+    font-family: "Crimson", serif;
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+</style>
