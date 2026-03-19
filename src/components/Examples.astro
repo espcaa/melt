@@ -1,82 +1,73 @@
 ---
 import ExampleItem from "./ExampleItem.astro"
 import Placeholder from "../assets/placeholder.png"
+import Badge from "../assets/badges.png"
+import Devboard from "../assets/devboards.png"
+import GameConsole from "../assets/gameconsole.png"
+import HackerCard from "../assets/hackercard.png"
+
+import Separator from "./Separator.astro"
+
+type Example = {
+    image: ImageMetadata;
+    imageAlt: string;
+    title: string;
+    description: string;
+}
+
+var examples : Example[] = [
+    {
+        image: Badge,
+        imageAlt: "shiba badge",
+        title: "A custom event badge?",
+        description: "Think about fun things that a badge with an accelerometer and a low power mcu could do!"
+    },
+    {
+        image: Devboard,
+        imageAlt: "devboard",
+        title: "Custom devboards!",
+        description: "Find a cool mcu, add everything you need and get ready for an insane soldering challenge..."
+    },
+    {
+        image: GameConsole,
+        imageAlt: "game console",
+        title: "Custom game consoles",
+        description: "you'd just need a screen..."
+    },
+    {
+        image: HackerCard,
+        imageAlt: "hacker card",
+        title: "A hacker card?",
+        description: "Make a custom hacker card with a small oled and an accelerometer! You could make it do all sorts of fun things!"
+    },
+    {
+        image: Placeholder,
+        imageAlt: "placeholder",
+        title: "???",
+        description: "Your project here soon! Get building :D"
+    }
+]
+
 ---
 <section class="examples-section">
     <div class="marquee">
         <div class="marquee-track">
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
-            <ExampleItem
-                image={Placeholder}
-                imageAlt=""
-                title="Blinking Badge"
-                description="A cute badge with a blinking led! Perfect for beginners :)"
-            />
+            {examples.map(example => (
+                <ExampleItem
+                    image={example.image}
+                    imageAlt={example.imageAlt}
+                    title={example.title}
+                    description={example.description}
+                />
+            ))}
+             {examples.map(example => (
+                <ExampleItem
+                    image={example.image}
+                    imageAlt={example.imageAlt}
+                    title={example.title}
+                    description={example.description}
+                />
+            ))}
         </div>
     </div>
 </section>
@@ -90,6 +81,38 @@ import Placeholder from "../assets/placeholder.png"
         transform: translateX(-50%);
         overflow: hidden;
         padding: 3rem 0;
+        background-color: white;
+        margin-bottom: 10rem;
+    }
+
+    .examples-section::before,
+    .examples-section::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        width: 200%;
+        height: 10px;
+        background-image: linear-gradient(to right, var(--primary-color) 50%, transparent 50%);
+        background-size: 40px 100%;
+    }
+
+    .examples-section::before {
+        top: 0;
+        animation: scroll-reverse 50s linear infinite;
+    }
+
+    .examples-section::after {
+        bottom: 0;
+        animation: scroll-reverse 50s linear infinite;
+    }
+
+    @keyframes scroll-reverse {
+        0% {
+            transform: translateX(-50%);
+        }
+        100% {
+            transform: translateX(0);
+        }
     }
 
     .marquee-track {
