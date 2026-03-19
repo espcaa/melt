@@ -15,7 +15,7 @@ type Example = {
     description: string;
 }
 
-var examples : Example[] = [
+const examples : Example[] = [
     {
         image: Badge,
         imageAlt: "shiba badge",
@@ -113,6 +113,11 @@ var examples : Example[] = [
         100% {
             transform: translateX(0);
         }
+    }
+
+    .marquee {
+        overflow: hidden;
+        width: 100%;
     }
 
     .marquee-track {

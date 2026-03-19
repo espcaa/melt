@@ -22,6 +22,34 @@ import Hackclub from "../components/Hackclub.astro";
 
 <style is:global>
 
+    @font-face {
+        font-family: "Satoshi";
+        src: url("/satoshi.woff2") format("woff2");
+        font-weight: 800;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Crimson";
+        src: url("/crimson.ttf") format("truetype");
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    @font-face {
+        font-family: "Playfair";
+        src: url("/playfair.ttf") format("truetype");
+        font-weight: 400;
+        font-display: swap;
+    }
+
+    :root {
+        --primary-color: #f8abff;
+        --primary-color-hover: #f6a3f9;
+        --secondary-color: #fff2c7;
+        --background-color: #ffffff;
+        --text-color: #333;
+    }
 
     *, *::before, *::after {
         box-sizing: border-box;
@@ -38,8 +66,16 @@ import Hackclub from "../components/Hackclub.astro";
         background-size: 40px 40px;
         background-color: #ffffff;
     }
+
     main {
         margin: 0 auto;
+    }
+
+    .mainContainer {
+        max-width: 800px;
+        margin: 0 auto;
+        margin-top: 70px;
+        padding: 20px;
     }
 
 </style>
