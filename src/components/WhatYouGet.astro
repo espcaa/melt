@@ -1,0 +1,77 @@
+---
+const items = [
+    { icon: "local_fire_department", title: "A hotplate", description: "A real hotplate to reflow solder your PCB!" },
+    { icon: "memory", title: "SMD components", description: "All the surface-mount parts for your design" },
+    { icon: "inventory_2", title: "Your PCB", description: "Your custom PCB, manufactured and shipped to you" },
+    { icon: "menu_book", title: "Guided support", description: "Calls and guides to help you through the process" },
+];
+---
+
+<section class="what-you-get">
+    <h2>What you get</h2>
+    <div class="items-grid">
+        {items.map(({ icon, title, description }) => (
+            <div class="item-card">
+                <span class="material-icons item-icon">{icon}</span>
+                <h3>{title}</h3>
+                <p>{description}</p>
+            </div>
+        ))}
+    </div>
+</section>
+
+<style>
+    .what-you-get {
+        max-width: 900px;
+        margin: 4rem auto;
+        padding: 0 1rem;
+    }
+
+    .what-you-get h2 {
+        font-family: "Satoshi";
+        font-size: 2rem;
+        color: #333;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .items-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .item-card {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+        text-align: center;
+    }
+
+    .item-icon {
+        font-size: 2.5rem;
+        color: var(--primary-color);
+    }
+
+    .item-card h3 {
+        font-family: "Satoshi";
+        font-size: 1.15rem;
+        color: #333;
+        margin: 0.5rem 0 0.25rem;
+    }
+
+    .item-card p {
+        font-family: "Crimson", serif;
+        font-size: 1rem;
+        color: #666;
+        margin: 0;
+        line-height: 1.5;
+    }
+
+    @media (max-width: 600px) {
+        .items-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>

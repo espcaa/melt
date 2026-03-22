@@ -3,14 +3,16 @@ import Layout from "../layouts/Layout.astro";
 import Footer from "../components/Footer.astro";
 import Steps from "../components/Steps.astro";
 import Faq from "../components/FAQ.astro";
+import Examples from "../components/Examples.astro";
+import RsvpCounter from "../components/RsvpCounter.astro";
+import WhatYouGet from "../components/WhatYouGet.astro";
 import ArrowsImg from "../assets/arrows.png";
 import { Image } from "astro:assets";
-import Examples from "../components/Examples.astro";
 ---
 
 <Layout title="Melt">
     <div class="absoluteDocBtn">
-        <a href="https://docs.google.com/document/d/1Xo9n8s0l3j2mLh7e5kKZtHqj8v6u9yXo5z8a9b0c1/edit?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <a href="/docs">
             <button class="docbtn"><span class="material-icons icon">description</span> <p class="fancy">Docs</p></button>
         </a>
         <Image src={ArrowsImg} alt="arrows" class="imageAbsoluteButton" />
@@ -29,8 +31,12 @@ import Examples from "../components/Examples.astro";
                 <button class="rsvp" id="rsvp-button">RSVP!</button>
             </div>
             <a href="">
-                <button class="btn">Submit now!</button>
+                <button class="btn submit">
+                    <span class="material-icons icon">send</span>
+                    Submit now!
+                </button>
             </a>
+            <RsvpCounter />
         </div>
         <div class="content">
             <Steps />
@@ -144,7 +150,8 @@ import Examples from "../components/Examples.astro";
         color: #333;
         border: none;
         padding: 1rem 2rem;
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+        font-family: "Satoshi";
         border-radius: 0.5rem;
         cursor: pointer;
     }
@@ -175,7 +182,6 @@ import Examples from "../components/Examples.astro";
         position: absolute;
         bottom: -70px;
         left: -70px;
-
         width: 100px;
         height: 100px;
     }
@@ -200,7 +206,7 @@ import Examples from "../components/Examples.astro";
 
     p.fancy {
         font-family: "Satoshi";
-        font-size : 1.5rem;
+        font-size: 1.5rem;
         margin-bottom: 0.5rem;
         margin-top: 0.5rem;
     }

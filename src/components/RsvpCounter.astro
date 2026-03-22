@@ -1,0 +1,28 @@
+<p class="rsvp-counter"><span id="rsvp-count">0</span> people have RSVP'd!</p>
+
+<style>
+    .rsvp-counter {
+        font-family: "Satoshi";
+        font-size: 0.95rem;
+        color: #555;
+        text-align: center;
+        margin-top: 0.5rem;
+    }
+
+    #rsvp-count {
+        color: var(--primary-color);
+        font-weight: 700;
+    }
+</style>
+
+<script>
+    async function loadCount() {
+        try {
+            const res = await fetch("/api/rsvp-count");
+            const data = await res.json();
+            const el = document.getElementById("rsvp-count");
+            if (el) el.textContent = String(data.count ?? 0);
+        } catch {}
+    }
+    loadCount();
+</script>
