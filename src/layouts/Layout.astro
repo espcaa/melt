@@ -1,15 +1,36 @@
 ---
-const { title = "smelt ysws!" } = Astro.props;
+const {
+    title = "Smelt ysws!",
+    description = "Make a funny pcb with smd components and get a hotplate to (melt) assemble it!",
+    image = "/og.png",
+} = Astro.props;
 import Hackclub from "../components/Hackclub.astro";
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site ?? "https://smelt.hackclub.com");
+const ogImageURL = new URL(image, canonicalURL);
 ---
 
 <html lang="en">
     <head>
         <meta charset="utf-8" />
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.png" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <title>{title}</title>
+        <meta name="description" content={description} />
+
+        <!-- open thingy;; -->
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL.href} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImageURL.href} />
+
+        <!-- twitter -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImageURL.href} />
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
